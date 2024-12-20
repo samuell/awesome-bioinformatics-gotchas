@@ -35,4 +35,4 @@ So, you can't simply use something like the following:
 grep -c "^@" test.fastq
 ```
 
-Because in `read_1` then quality line begins with `@`
+Because in `read_1` the quality line begins with `@`, so you will incorrectly get 3 reads, instead of 2.
