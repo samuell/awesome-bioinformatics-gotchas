@@ -11,3 +11,28 @@ Wikipedia [writes this](https://en.wikipedia.org/w/index.php?title=Sequence_alig
 > The [SAMv1 spec document](https://github.com/samtools/hts-specs/blob/master/SAMv1.pdf) defines newer CIGAR codes. In most cases it is
 > preferred to use the `=` and `X` characters to denote matches or mismatches
 > rather than the older `M` character, which is ambiguous.
+
+### Count reads is a FASTQ using lines that start with `@`
+
+FASTQ files use `@` to denote the start of a new read, but `@` is also a valid quality score! 
+
+Let's pretend this is your FASTQ:
+
+```
+@read_1
+ANCACCAGCACGCCGCTGGCCTCCAGCACCAGCTCGCTGGTCAGGCGCAGGCCCGCCTGTTTATCCTCCGCCGTTACCGTCAGGGTGTGTCCCTGCTGCTGCACGTCTGTAGTGGTAAAGACGGGGGAACCGTCCAGCCCCTGGCGATGT
++
+@#IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+@read_2
+GCCCGAATCGCAGCAGCAACGCTGCAACCGGTAGCACGGCGATAGGGAGCTGCAAAGCCCTACCGAGGCGCTGGAAAAAACCTAAAATATTCATCCTATTCCCCCTACGAGAACCATTGTTAAGACTCGCGCATAAACTATGTTTTTATC
++
+9III999II9I99II9IIII9I99--III-9I-9II-II9I-I-I---IIIIII9999I-II-I-9II9-I--9I9-I---9--9999-9-9999-9I-II9III99999II--I-II-9I-I--IIII999-9-III-9I9-III999-
+```
+
+So, you can't simply use something like the following:
+
+```
+grep -c "^@" test.fastq
+```
+
+Because in `read_1` then quality line begins with `@`
