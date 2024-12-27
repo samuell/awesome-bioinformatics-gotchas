@@ -36,3 +36,14 @@ grep -c "^@" test.fastq
 ```
 
 Because in `read_1` the quality line begins with `@`, so you will incorrectly get 3 reads, instead of 2.
+
+### BCFTools actually has a lot of plug-ins
+
+If you have ever used BCFTools and found yourself requiring additional data to be added to your VCF file, you are not alone. Fortunately BCFTools offers a rich set of [plugins](https://samtools.github.io/bcftools/howtos/plugins.html) that can be used to fill in missing VCF information or to perform complex operations.
+
+For example, if you need to filter VCF entries based on the alternate allele frequency (AF), you may find that BCFTools does not provide this information by default. However the [fill-tags](https://samtools.github.io/bcftools/howtos/plugin.fill-tags.html) plugin can compute and populate the AF values while adding additional information to the `INFO` and `FORMAT` tags that can be used for subsequent operations.
+
+
+
+
+
