@@ -43,6 +43,9 @@ If you have ever used BCFTools and found yourself requiring additional data to b
 
 For example, if you need to filter VCF entries based on the alternate allele frequency (AF), you may find that BCFTools does not provide this information by default. However the [fill-tags](https://samtools.github.io/bcftools/howtos/plugin.fill-tags.html) plugin can compute and populate the AF values while adding additional information to the `INFO` and `FORMAT` tags that can be used for subsequent operations.
 
+## Other Resources:
+
+- [Blasted Bioinformatics](https://blastedbio.blogspot.com/) A blog of common bioinformatics gotchas written by [Peter Cock]([https://github.com/peterjc/blast_max_target_seqs](https://github.com/peterjc)) containing a list of bioinformatic lessons learned the hard way including a set of posts related to Blast+ parameter issues.
 
 
 
